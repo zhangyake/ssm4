@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
+/**
+ * @author jaak
+ */
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -17,16 +20,16 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping("/list")
-    public String userList(User user, Model model){
+    public String userList(User user, Model model) {
         List<User> users = userService.getUserList(user);
-        model.addAttribute("users",users );
-        model.addAttribute("tom","kk");
+        model.addAttribute("users", users);
+        model.addAttribute("tom", "kk");
         System.out.println("hello list users 用户");
         return "index";
     }
 
     @RequestMapping("/add")
-    public String addUser(User user){
+    public String addUser(User user) {
 
         userService.saveUser(user);
         return "redirect:list";
